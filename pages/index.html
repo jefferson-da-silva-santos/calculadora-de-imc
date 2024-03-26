@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <title>Calculadora de IMC</title>
+  </head>
+  <body>
+    <div class="div-body" id="div-pai">
+      <div id="formCalculadora" class="caixa-principal">
+        <div id="div-topo" class="caixa-titulo-calculadora">
+          <h1 id="h1-titulo" class="titulo-calc">Calculadora de IMC</h1>
+        </div>
+        <div id="div-sexo-feminino" class="div-sexo">
+          <h3 id="titulo-feminino">FEMININO</h3>
+        </div>
+        <div id="div-sexo-masculino" class="div-sexo">
+          <h3 id="titulo-masculino">MASCULINO</h3>
+        </div>
+        <div id="div-altura" class="altura">
+          <h3 id="h3-imc-tipo">ALTURA</h3>
+          <h1 id="valor-range">180</h1>
+          <h4 id="h3-cm">cm</h4>
+          <input
+            type="range"
+            id="input-altura"
+            name="idade"
+            min="100"
+            max="250"
+          />
+        </div>
+        <div id="div-idade" class="peso-age">
+          <h3>IDADE</h3>
+          <h1 id="mostrar-idade">50</h1>
+          <button id="btn-diminuir-idade" class="btn-soma-sub">-</button>
+          <button id="btn-aumentar-idade" class="btn-soma-sub">+</button>
+        </div>
+        <div id="div-peso" class="peso-age">
+          <h3>PESO</h3>
+          <h1 id="mostrar-peso">50</h1>
+          <button id="btn-diminuir-peso" class="btn-soma-sub">-</button>
+          <button id="btn-aumentar-peso" class="btn-soma-sub">+</button>
+        </div>
+        <button id="btn-final" class="btn-calcular" type="submit">
+          CALCULAR
+        </button>
+      </div>
+    </div>
+
+    <script src="../src/script-index.js"></script>
+  </body>
+</html>

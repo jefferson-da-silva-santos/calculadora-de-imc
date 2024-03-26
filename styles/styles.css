@@ -1,0 +1,314 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --cor-body: #585a73;
+  --cor-sombra-body: #41424d;
+  --cor-fundo-calculadora: #090e21;
+  --cor-caixas-male-female: #111328;
+  --cor-caixas-male-female-hover: #141630;
+  --cor-caixas-peso-altura-age: #1d1e33;
+  --cor-rosa-calcular: #f2226e;
+  --cor-botoes-mais-menos: #22264c;
+  --cor-textos-caixas-peso-altura-age: #77798c;
+  --cor-verde-resultado: #40b642;
+  --fonte-titulo: "Inter", sans-serif;
+}
+
+body {
+  background-color: white;
+}
+
+.div-body {
+  background-color: var(--cor-body);
+  width: 100%;
+  height: 101vh;
+  position: relative;
+}
+
+.caixa-principal {
+  position: absolute;
+  background-color: var(--cor-fundo-calculadora);
+  min-width: 320px;
+  max-width: 320px;
+  min-height: 593px;
+  border-radius: 30px;
+  border: 13px solid black;
+  margin: auto;
+  outline: 2.5px solid #555555;
+  box-shadow: 12px 7px 12px var(--cor-sombra-body);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.caixa-titulo-calculadora {
+  box-shadow: 0px 1px 8px #04060ec5;
+  height: 40px;
+  padding: 10px;
+  text-align: center;
+}
+
+.titulo-calc {
+  color: white;
+  font-family: var(--fonte-titulo);
+  font-size: 16px;
+}
+
+#div-sexo-feminino {
+  float: right;
+  background-image: url("../imgs/femini.png");
+  background-repeat: no-repeat;
+  background-position: 50% 28px;
+  background-size: 30px 30px;
+  cursor: pointer;
+}
+
+#div-sexo-masculino {
+  float: top left;
+  background-image: url("../imgs/mascu.png");
+  background-repeat: no-repeat;
+  background-position: 50% 28px;
+  background-size: 30px 30px;
+  cursor: pointer;
+}
+
+.div-sexo {
+  background-color: var(--cor-caixas-male-female);
+  width: 41%;
+  height: 115px;
+  margin: 15px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px #060a195e;
+}
+
+#div-sexo-masculino:hover {
+  background-color: var(--cor-caixas-male-female-hover);
+}
+
+#div-sexo-feminino:hover {
+  background-color: var(--cor-caixas-male-female-hover);
+}
+
+.btn-soma-sub {
+  cursor: pointer;
+}
+
+.div-sexo h3 {
+  font-family: var(--fonte-titulo);
+  font-weight: 500;
+  font-size: 15px;
+  text-align: center;
+  padding-top: 70px;
+  color: var(--cor-textos-caixas-peso-altura-age);
+}
+
+.altura {
+  width: 90%;
+  height: 155px;
+  background-color: var(--cor-caixas-peso-altura-age);
+  margin: 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+  box-shadow: 1px 1px 4px #0609175e;
+  text-align: center;
+}
+
+.altura h3 {
+  font-family: var(--fonte-titulo);
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--cor-textos-caixas-peso-altura-age);
+  padding: 20px;
+  font-size: 15px;
+}
+
+.altura > h1 {
+  font-family: var(--fonte-titulo);
+  color: white;
+  font-weight: 900;
+  font-size: 30px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  display: inline;
+  margin-left: 20px;
+}
+
+#h3-cm {
+  display: inline;
+  padding: 0;
+  font-family: var(--fonte-titulo);
+  color: var(--cor-textos-caixas-peso-altura-age);
+  font-weight: 200;
+}
+
+#input-altura {
+  margin-top: 20px;
+  width: 85%;
+  height: 5px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.peso-age {
+  width: 41%;
+  height: 140px;
+  margin: 15px;
+  background-color: var(--cor-caixas-peso-altura-age);
+  margin-top: 20px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px #080d22;
+}
+
+#div-idade {
+  float: right;
+  margin-top: 6px;
+  text-align: center;
+}
+
+#div-idade > h3 {
+  font-family: var(--fonte-titulo);
+  font-weight: 500;
+  font-size: 13px;
+  text-align: center;
+  color: var(--cor-textos-caixas-peso-altura-age);
+  margin-top: 20px;
+}
+
+#div-idade > h1 {
+  font-family: var(--fonte-titulo);
+  color: white;
+  font-weight: 900;
+  font-size: 30px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+#div-idade > button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  font-size: 20px;
+  font-weight: bolder;
+  color: white;
+  background-color: var(--cor-botoes-mais-menos);
+  box-shadow: 0px 5px 8px #070a1a8e;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+#div-peso {
+  text-align: center;
+}
+
+#div-peso > h3 {
+  font-family: var(--fonte-titulo);
+  font-weight: 500;
+  font-size: 13px;
+  text-align: center;
+  color: var(--cor-textos-caixas-peso-altura-age);
+  padding-top: 20px;
+}
+
+#div-peso > h1 {
+  font-family: var(--fonte-titulo);
+  font-weight: 900;
+  color: white;
+  font-size: 30px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+#div-peso > button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  font-size: 20px;
+  font-weight: bolder;
+  color: white;
+  background-color: var(--cor-botoes-mais-menos);
+  box-shadow: 0px 5px 8px #070a1a8e;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.btn-calcular {
+  margin-top: 8px;
+  width: 100%;
+  height: 45px;
+  border: none;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: var(--cor-rosa-calcular);
+  font-family: var(--fonte-titulo);
+  font-size: 23px;
+  font-weight: 900;
+  color: white;
+  cursor: pointer;
+}
+
+/* ESTRUTURA DA PAGINA APOS O CLICK */
+
+.caixa-titulo-calculadora-2 {
+  box-shadow: 0px 1px 8px #04060ec5;
+  height: 43px;
+  padding: 2px;
+  text-align: center;
+}
+
+.caixa-titulo-calculadora-2 h1 {
+  color: white;
+  font-family: var(--fonte-titulo);
+  font-size: 30px;
+}
+
+.resultado {
+  width: 90%;
+  height: 443px;
+  background-color: var(--cor-caixas-peso-altura-age);
+  margin: 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+  box-shadow: 1px 1px 4px #0609175e;
+  text-align: center;
+  padding-top: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 20px;
+}
+
+.resultado h3 {
+  font-family: var(--fonte-titulo);
+  font-weight: bolder;
+  font-size: 13px;
+  color: #58a859;
+  padding: 20px;
+  font-size: 20px;
+  margin-bottom: 27px;
+  text-transform: uppercase;
+}
+
+.resultado > h1 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  font-weight: bolder;
+  font-size: 120px;
+  display: inline;
+  margin-left: 0;
+  text-shadow: 4px 2px 6px var(--cor-fundo-calculadora);
+}
+
+.resultado p {
+  font-family: var(--fonte-titulo);
+  color: white;
+  font-size: 19px;
+  margin-top: 50px;
+  text-shadow: 2px 0px 2px var(--cor-fundo-calculadora);
+}
