@@ -1,128 +1,145 @@
 let masculino = false;
 let feminino = false;
-
 let clickCalcular = false;
+//cores
+const branco = "rgb(255, 255, 255)";
+const rosa = "#F2226E";
+const cinza = "#77798c";
+const azulClaro = "rgb(0, 85, 255)";
+const azulEscuro = "#111328";
+
+//variaveis do document
+const btnAumentarPeso = document.getElementById("btn-aumentar-peso");
+const btnDiminuirPeso = document.getElementById("btn-diminuir-peso");
+const mostrarValorPeso = document.getElementById("mostrar-peso");
+const btnAumentarIdade = document.getElementById("btn-aumentar-idade");
+const btnDiminuirIdade = document.getElementById("btn-diminuir-idade");
+const mostrarValorIdade = document.getElementById("mostrar-idade");
+const divFeminino = document.getElementById("div-sexo-feminino");
+const divMasculino = document.getElementById("div-sexo-masculino");
+const btnCalcularIMC = document.getElementById("btn-final");
+const inputAltura = document.getElementById("input-altura");
+const tituloH1 = document.getElementById("h1-titulo");
+const centimetrosH3 = document.getElementById("h3-cm");
+const divPeso = document.getElementById("div-peso");
+const divIdade = document.getElementById("div-idade");
+const divAltura = document.getElementById("div-altura");
+const divTituloTopo = document.getElementById("div-topo");
+const tipoIMC_h3 = document.getElementById("h3-imc-tipo");
+const imcH1 = document.getElementById("valor-range");
+
+document.addEventListener("DOMContentLoaded", function () {
+  atualizarValorRange();
+
+  //Abaixo os códigos para incrementar o peso
+  btnAumentarPeso.addEventListener("click", function () {
+    const mostrarValor = document.getElementById("mostrar-peso");
+    let convertTextMostrarValor = parseInt(mostrarValor.textContent);
+    let incrementValor = convertTextMostrarValor + 1;
+    if (incrementValor !== -1 && incrementValor < 400) {
+      mostrarValor.textContent = incrementValor;
+    }
+  });
+
+  //Abaixo os códigos para decrementar o peso
+  btnDiminuirPeso.addEventListener("click", function () {
+    let convertTextMostrarValor = parseInt(mostrarValorPeso.textContent);
+    let decrementarValor = convertTextMostrarValor - 1;
+    if (decrementarValor !== -1 && decrementarValor < 400) {
+      mostrarValorPeso.textContent = decrementarValor;
+    }
+  });
+
+  //Abaixo os códigos para incrementar a idade
+  btnAumentarIdade.addEventListener("click", function () {
+    let convertTextMostrarIdade = parseInt(mostrarValorIdade.textContent);
+    let incrementarValor = convertTextMostrarIdade + 1;
+    if (incrementarValor !== 17 && incrementarValor < 400) {
+      mostrarValorIdade.textContent = incrementarValor;
+    }
+  });
+
+  //Aqui vai o código para decrementar idade
+  btnDiminuirIdade.addEventListener("click", function () {
+    let convertTextMostrarIdade = parseInt(mostrarValorIdade.textContent);
+    let decrementarIdade = convertTextMostrarIdade - 1;
+    if (decrementarIdade !== 17 && decrementarIdade < 400) {
+      mostrarValorIdade.textContent = decrementarIdade;
+    }
+  });
+
+  //evento de click da div sexo feminino
+  divFeminino.addEventListener("click", function () {
+    if (feminino === false) {
+      let titulo = document.getElementById("titulo-feminino");
+      titulo.style.color = branco;
+      divFeminino.style.backgroundColor = rosa;
+      feminino = true;
+      divMasculino.style.pointerEvents = "none";
+    } else {
+      let titulo = document.getElementById("titulo-feminino");
+      titulo.style.color = cinza;
+      divFeminino.style.backgroundColor = azulEscuro;
+      feminino = false;
+      divMasculino.style.pointerEvents = "auto";
+    }
+  });
+
+  //evento de click da div sexo masculino
+  divMasculino.addEventListener("click", function () {
+    if (masculino === false) {
+      let titulo = document.getElementById("titulo-masculino");
+      titulo.style.color = branco;
+      divMasculino.style.backgroundColor = azulClaro;
+      masculino = true;
+      divFeminino.style.pointerEvents = "none";
+    } else {
+      let titulo = document.getElementById("titulo-masculino");
+      titulo.style.color = cinza;
+      divMasculino.style.backgroundColor = azulEscuro;
+      masculino = false;
+      divFeminino.style.pointerEvents = "auto";
+    }
+  });
+
+  //evento de click do botão calcular
+  btnCalcularIMC.addEventListener("click", function (event) {
+    const valorAltura = document.getElementById("input-altura").value;
+    const valuePeso = document.getElementById("mostrar-peso").textContent;
+    const valueIdade = document.getElementById("mostrar-idade").textContent;
+
+    if (!clickCalcular) {
+      //convertendo os valores para Number
+
+      let altura = centimetroConvertParaMetro(Number(valorAltura));
+      let peso = Number(valuePeso);
+      let idade = Number(valueIdade);
+
+      const calcIMC = peso / (altura * altura);
+      const resutado = calcIMC.toFixed(1);
+
+      if (feminino) {
+        mudarEstrutura(resutado, idade);
+      } else if (masculino) {
+        mudarEstrutura(resutado, idade);
+      } else {
+        alert("Preencha todos os campos");
+        event.preventDefault();
+      }
+      clickCalcular = true;
+    } else {
+      window.location.reload();
+      clickCalcular = false;
+    }
+  });
+});
 
 function atualizarValorRange() {
-  const input = document.getElementById("input-altura");
   let h1 = document.getElementById("valor-range");
-  input.addEventListener("change", function () {
-    h1.textContent = input.value;
+  inputAltura.addEventListener("change", function () {
+    h1.textContent = inputAltura.value;
   });
 }
-atualizarValorRange();
-
-//Abaixo os códigos para incrementar o peso
-const btnAumentarPeso = document.getElementById("btn-aumentar-peso");
-btnAumentarPeso.addEventListener("click", function () {
-  const mostrarValor = document.getElementById("mostrar-peso");
-  let convertTextMostrarValor = parseInt(mostrarValor.textContent);
-  let incrementValor = convertTextMostrarValor + 1;
-  if (incrementValor !== -1 && incrementValor < 400) {
-    mostrarValor.textContent = incrementValor;
-  }
-});
-
-//Abaixo os códigos para decrementar o peso
-const btnDiminuirPeso = document.getElementById("btn-diminuir-peso");
-btnDiminuirPeso.addEventListener("click", function () {
-  const mostrarValorPeso = document.getElementById("mostrar-peso");
-  let convertTextMostrarValor = parseInt(mostrarValorPeso.textContent);
-  let decrementarValor = convertTextMostrarValor - 1;
-  if (decrementarValor !== -1 && decrementarValor < 400) {
-    mostrarValorPeso.textContent = decrementarValor;
-  }
-});
-
-//Abaixo os códigos para incrementar a idade
-const btnAumentarIdade = document.getElementById("btn-aumentar-idade");
-btnAumentarIdade.addEventListener("click", function () {
-  const mostrarValorIdade = document.getElementById("mostrar-idade");
-  let convertTextMostrarIdade = parseInt(mostrarValorIdade.textContent);
-  let incrementarValor = convertTextMostrarIdade + 1;
-  if (incrementarValor !== 17 && incrementarValor < 400) {
-    mostrarValorIdade.textContent = incrementarValor;
-  }
-});
-
-//Aqui vai o código para decrementar idade
-const btnDiminuirIdade = document.getElementById("btn-diminuir-idade");
-btnDiminuirIdade.addEventListener("click", function () {
-  const mostrarValorIdade = document.getElementById("mostrar-idade");
-  let convertTextMostrarIdade = parseInt(mostrarValorIdade.textContent);
-  let decrementarIdade = convertTextMostrarIdade - 1;
-  if (decrementarIdade !== 17 && decrementarIdade < 400) {
-    mostrarValorIdade.textContent = decrementarIdade;
-  }
-});
-
-//evento de click da div sexo feminino
-const divFeminino = document.getElementById("div-sexo-feminino");
-divFeminino.addEventListener("click", function () {
-  if (feminino === false) {
-    let titulo = document.getElementById("titulo-feminino");
-    titulo.style.color = "rgb(255, 255, 255)";
-    divFeminino.style.backgroundColor = "#F2226E";
-    feminino = true;
-    divMasculino.style.pointerEvents = "none";
-  } else {
-    let titulo = document.getElementById("titulo-feminino");
-    titulo.style.color = "#77798c";
-    divFeminino.style.backgroundColor = "#111328";
-    feminino = false;
-    divMasculino.style.pointerEvents = "auto";
-  }
-});
-
-//evento de click da div sexo masculino
-const divMasculino = document.getElementById("div-sexo-masculino");
-divMasculino.addEventListener("click", function () {
-  if (masculino === false) {
-    let titulo = document.getElementById("titulo-masculino");
-    titulo.style.color = "rgb(255, 255, 255)";
-    divMasculino.style.backgroundColor = "rgb(0, 85, 255)";
-    masculino = true;
-    divFeminino.style.pointerEvents = "none";
-  } else {
-    let titulo = document.getElementById("titulo-masculino");
-    titulo.style.color = "#77798c";
-    divMasculino.style.backgroundColor = "#111328";
-    masculino = false;
-    divFeminino.style.pointerEvents = "auto";
-  }
-});
-
-//evento de click do botão calcular
-const btnCalcularIMC = document.getElementById("btn-final");
-btnCalcularIMC.addEventListener("click", function (event) {
-  const valorAltura = document.getElementById("input-altura").value;
-  const valuePeso = document.getElementById("mostrar-peso").textContent;
-  const valueIdade = document.getElementById("mostrar-idade").textContent;
-
-  if (!clickCalcular) {
-    //convertendo os valores para Number
-
-    let altura = centimetroConvertParaMetro(Number(valorAltura));
-    let peso = Number(valuePeso);
-    let idade = Number(valueIdade);
-
-    const calcIMC = peso / (altura * altura);
-    const resutado = calcIMC.toFixed(1);
-
-    if (feminino) {
-      mudarEstrutura(resutado, idade);
-    } else if (masculino) {
-      mudarEstrutura(resutado, idade);
-    } else {
-      alert("Preencha todos os campos");
-      event.preventDefault();
-    }
-    clickCalcular = true;
-  } else {
-    window.location.reload();
-    clickCalcular = false;
-  }
-});
 
 function centimetroConvertParaMetro(valor) {
   return valor / 100;
@@ -130,50 +147,40 @@ function centimetroConvertParaMetro(valor) {
 
 //Baixo a função que ira mudar a estrutura da página
 function mudarEstrutura(imc, idade) {
-  const divSexoFem = document.getElementById("div-sexo-feminino");
-  const divSexoMas = document.getElementById("div-sexo-masculino");
   //alterando o display das divs masculino e feminino
-  divSexoFem.style.display = "none";
-  divSexoMas.style.display = "none";
+  divFeminino.style.display = "none";
+  divMasculino.style.display = "none";
 
-  const divPeso = document.getElementById("div-peso");
-  const divIdade = document.getElementById("div-idade");
   //alterando o display das divs peso e idade
   divPeso.style.display = "none";
   divIdade.style.display = "none";
 
-  const h4Cm = document.getElementById("h3-cm");
-  const inputRange = document.getElementById("input-altura");
+ 
   //alterando o display do h4 e do input[type='range']
-  h4Cm.style.display = "none";
-  inputRange.style.display = "none";
+  centimetrosH3.style.display = "none";
+  inputAltura.style.display = "none";
 
   //alterando classes
-  const divTit = document.getElementById("div-topo");
-  divTit.classList.toggle("caixa-titulo-calculadora-2");
+  divTituloTopo.classList.toggle("caixa-titulo-calculadora-2");
 
   //alterando texto do h1
-  const h1Tit = document.getElementById("h1-titulo");
-  h1Tit.textContent = "Resultado";
+  tituloH1.textContent = "Resultado";
 
   //alterando a classe da div altura para resultado
-  const divAltura = document.getElementById("div-altura");
   divAltura.classList.toggle("resultado");
 
-  const btn = document.getElementById("btn-final");
-  btn.textContent = "RECALCULAR";
+  btnCalcularIMC.textContent = "RECALCULAR";
 
   //alterando o tipo de imc
-  const h3TipoIMC = document.getElementById("h3-imc-tipo");
   if (masculino) {
-    h3TipoIMC.textContent = imcMasculino(imc, idade);
+    tipoIMC_h3.textContent = imcMasculino(imc, idade);
 
     //criando um paragrafo na div .resultado
     const paragrafo = document.createElement("p");
     divAltura.appendChild(paragrafo);
     paragrafo.textContent = gerarFraseDeEfeito(imcMasculino(imc, idade));
   } else if (feminino) {
-    h3TipoIMC.textContent = imcFeminino(imc, idade);
+    tipoIMC_h3.textContent = imcFeminino(imc, idade);
 
     //criando um paragrafo na div .resultado
     const paragrafo = document.createElement("p");
@@ -181,9 +188,7 @@ function mudarEstrutura(imc, idade) {
     paragrafo.textContent = gerarFraseDeEfeito(imcFeminino(imc, idade));
   }
   //alterando o valor do h1 para o IMC
-
-  const h1IMC = document.getElementById("valor-range");
-  h1IMC.textContent = imc;
+  imcH1.textContent = imc;
 }
 
 function imcMasculino(imc, idade) {
@@ -362,9 +367,8 @@ function imcFeminino(imc, idade) {
   }
 }
 
-function gerarFraseDeEfeito(tipoIMC) {
-  let numeroAleatorio = Math.floor(Math.random() * 10) + 0;
 
+function gerarFraseDeEfeito(tipoIMC) {
   let abaixoDoPeso = [
     "Você está voando leve! Que tal dar um boost na nutrição?",
     "Hora de fortalecer! Seu corpo pede um pouco mais de atenção.",
@@ -442,6 +446,8 @@ function gerarFraseDeEfeito(tipoIMC) {
     "Cada dia é uma nova oportunidade para melhorar. Vamos começar hoje?",
     "Sua saúde é seu maior patrimônio. Vamos cuidar dela?",
   ];
+
+  let numeroAleatorio = Math.floor(Math.random() * 10) + 0;
 
   if (tipoIMC === "Abaixo do Peso") {
     return abaixoDoPeso[numeroAleatorio];
