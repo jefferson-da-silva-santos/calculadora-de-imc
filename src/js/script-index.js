@@ -155,7 +155,6 @@ function mudarEstrutura(imc, idade) {
   divPeso.style.display = "none";
   divIdade.style.display = "none";
 
- 
   //alterando o display do h4 e do input[type='range']
   centimetrosH3.style.display = "none";
   inputAltura.style.display = "none";
@@ -173,7 +172,7 @@ function mudarEstrutura(imc, idade) {
 
   //alterando o tipo de imc
   if (masculino) {
-    tipoIMC_h3.textContent = imcMasculino(imc, idade);
+    tipoIMC_h3.textContent = imcMasculino(imc);
 
     //criando um paragrafo na div .resultado
     const paragrafo = document.createElement("p");
@@ -185,185 +184,41 @@ function mudarEstrutura(imc, idade) {
     //criando um paragrafo na div .resultado
     const paragrafo = document.createElement("p");
     divAltura.appendChild(paragrafo);
-    paragrafo.textContent = gerarFraseDeEfeito(imcFeminino(imc, idade));
+    paragrafo.textContent = gerarFraseDeEfeito(imcFeminino(imc));
   }
   //alterando o valor do h1 para o IMC
   imcH1.textContent = imc;
 }
 
-function imcMasculino(imc, idade) {
-  if (idade >= 18 && idade <= 24) {
-    if (imc < 17) {
+function imcMasculino(imc) {
+    if (imc < 18.5) {
       return "Abaixo do Peso";
-    } else if (imc >= 17 && imc < 20.5) {
+    } else if (imc >= 18.5 && imc <= 24.9) {
       return "Peso Normal";
-    } else if (imc >= 20.5 && imc < 25) {
+    } else if (imc >= 25 && imc <= 29.5) {
       return "Sobrepeso";
-    } else if (imc >= 25 && imc < 30) {
+    } else if (imc >= 30 && imc <= 34.5) {
       return "Obesidade Grau I";
-    } else if (imc >= 30 && imc < 40) {
+    } else if (imc >= 35 && imc <= 39.9) {
       return "Obesidade Grau II";
     } else if (imc >= 40) {
       return "Obesidade Grau III";
     }
-  } else if (idade >= 25 && idade <= 34) {
-    if (imc < 17.5) {
-      return "Abaixo do Peso";
-    } else if (imc >= 17.5 && imc < 21) {
-      return "Peso Normal";
-    } else if (imc <= 21 && imc < 26) {
-      return "Sobrepeso";
-    } else if (imc >= 26 && imc < 31) {
-      return "Obesidade Grau I";
-    } else if (imc >= 31 && imc < 41) {
-      return "Obesidade Grau II";
-    } else if (imc >= 41) {
-      return "Obesidade Grau III";
-    }
-  } else if (idade >= 35 && idade <= 44) {
-    if (imc < 18) {
-      return "Abaixo do Peso";
-    } else if (imc >= 18 && imc < 22) {
-      return "Peso Normal";
-    } else if (imc >= 22 && imc < 27) {
-      return "Sobrepeso";
-    } else if (imc >= 27 && imc < 32) {
-      return "Obesidade Grau I";
-    } else if (imc >= 32 && imc < 42) {
-      return "Obesidade Grau II";
-    } else if (imc >= 42) {
-      return "Obesidade Grau III";
-    }
-  } else if (idade >= 45 && idade <= 54) {
-    if (imc < 18.5) {
-      return "Abaixo do Peso";
-    } else if (imc >= 18.5 && imc < 22.5) {
-      return "Peso Normal";
-    } else if (imc >= 22.5 && imc < 27.5) {
-      return "Sobrepeso";
-    } else if (imc >= 27.5 && imc < 32.5) {
-      return "Obesidade Grau I";
-    } else if (imc >= 32.5 && imc < 42.5) {
-      return "Obesidade Grau II";
-    } else if (imc >= 42.5) {
-      return "Obesidade Grau III";
-    }
-  } else if (idade >= 55 && idade <= 64) {
-    if (imc < 19) {
-      return "Abaixo do Peso";
-    } else if (imc >= 19 && imc < 23) {
-      return "Peso Normal";
-    } else if (imc >= 23 && imc < 28) {
-      return "Sobrepeso";
-    } else if (imc >= 28 && imc < 33) {
-      return "Obesidade Grau I";
-    } else if (imc >= 33 && imc < 43) {
-      return "Obesidade Grau II";
-    } else if (imc >= 43) {
-      return "Obesidade Grau III";
-    }
-  } else if (idade >= 65) {
-    if (imc < 19.5) {
-      return "Abaixo do Peso";
-    } else if (imc >= 19.5 && imc < 23.5) {
-      return "Peso Normal";
-    } else if (imc >= 23.5 && imc < 28.5) {
-      return "Sobrepeso";
-    } else if (imc >= 28.5 && imc < 33.5) {
-      return "Obesidade Grau I";
-    } else if (imc >= 33.5 && imc < 43.5) {
-      return "Obesidade Grau II";
-    } else if (imc >= 43.5) {
-      return "Obesidade Grau III";
-    }
-  }
 }
 
-function imcFeminino(imc, idade) {
-  if (idade >= 18 && idade < 25) {
-    if (imc < 16) {
-      return "Abaixo do Peso";
-    } else if (imc >= 16 && imc < 19) {
-      return "Peso Normal";
-    } else if (imc >= 19 && imc < 24) {
-      return "Sobrepeso";
-    } else if (imc >= 24 && imc < 29) {
-      return "Obesidade Grau I";
-    } else if (imc >= 29 && imc < 39) {
-      return "Obesidade Grau II";
-    } else if (imc >= 39) {
-      return "Obesidade Grau III";
-    }
-  } else if (idade >= 25 && idade < 35) {
-    if (imc < 16.5) {
-      return "Abaixo do Peso";
-    } else if (imc >= 16.5 && imc < 20) {
-      return "Peso Normal";
-    } else if (imc >= 20 && imc < 25) {
-      return "Sobrepeso";
-    } else if (imc >= 25 && imc < 30) {
-      return "Obesidade Grau I";
-    } else if (imc >= 30 && imc < 40) {
-      return "Obesidade Grau II";
-    } else if (imc >= 40) {
-      return "Obesidade Grau III";
-    }
-  } else if (idade >= 35 && idade < 45) {
-    if (imc < 17) {
-      return "Abaixo do Peso";
-    } else if (imc >= 17 && imc < 21) {
-      return "Peso Normal";
-    } else if (imc >= 21 && imc < 26) {
-      return "Sobrepeso";
-    } else if (imc >= 26 && imc < 31) {
-      return "Obesidade Grau I";
-    } else if (imc >= 31 && imc < 41) {
-      return "Obesidade Grau II";
-    } else if (imc >= 41) {
-      return "Obesidade Grau III";
-    }
-  } else if (idade >= 45 && idade < 55) {
-    if (imc < 17.5) {
-      return "Abaixo do Peso";
-    } else if (imc >= 17.5 && imc < 21.5) {
-      return "Peso Normal";
-    } else if (imc >= 21.5 && imc < 26.5) {
-      return "Sobrepeso";
-    } else if (imc >= 26.5 && imc < 31.5) {
-      return "Obesidade Grau I";
-    } else if (imc >= 31.5 && imc < 41.5) {
-      return "Obesidade Grau II";
-    } else if (imc >= 41.5) {
-      return "Obesidade Grau III";
-    }
-  } else if (idade >= 55 && idade < 65) {
-    if (imc < 18) {
-      return "Abaixo do Peso";
-    } else if (imc >= 18 && imc < 22) {
-      return "Peso Normal";
-    } else if (imc >= 22 && imc < 27) {
-      return "Sobrepeso";
-    } else if (imc >= 27 && imc < 32) {
-      return "Obesidade Grau I";
-    } else if (imc >= 32 && imc < 42) {
-      return "Obesidade Grau II";
-    } else if (imc >= 42) {
-      return "Obesidade Grau III";
-    }
-  } else if (idade >= 65) {
-    if (imc < 18.5) {
-      return "Abaixo do Peso";
-    } else if (imc >= 18.5 && imc < 22.5) {
-      return "Peso Normal";
-    } else if (imc >= 22.5 && imc < 27.5) {
-      return "Sobrepeso";
-    } else if (imc >= 27.5 && imc < 32.5) {
-      return "Obesidade Grau I";
-    } else if (imc >= 32.5 && imc < 42.5) {
-      return "Obesidade Grau II";
-    } else if (imc >= 42.5) {
-      return "Obesidade Grau III";
-    }
+function imcFeminino(imc) {
+  if (imc < 18.5) {
+    return "Abaixo do Peso";
+  } else if (imc >= 18.5 && imc <= 24.9) {
+    return "Peso Normal";
+  } else if (imc >= 25 && imc <= 29.5) {
+    return "Sobrepeso";
+  } else if (imc >= 30 && imc <= 34.5) {
+    return "Obesidade Grau I";
+  } else if (imc >= 35 && imc <= 39.9) {
+    return "Obesidade Grau II";
+  } else if (imc >= 40) {
+    return "Obesidade Grau III";
   }
 }
 
