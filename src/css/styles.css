@@ -62,7 +62,7 @@ body {
 
 #div-sexo-feminino {
   float: right;
-  background-image: url("../imgs/femini.png");
+  background-image: url("../image/femini.png");
   background-repeat: no-repeat;
   background-position: 50% 28px;
   background-size: 30px 30px;
@@ -71,7 +71,7 @@ body {
 
 #div-sexo-masculino {
   float: top left;
-  background-image: url("../imgs/mascu.png");
+  background-image: url("../image/mascu.png");
   background-repeat: no-repeat;
   background-position: 50% 28px;
   background-size: 30px 30px;
