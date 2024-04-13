@@ -300,7 +300,7 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: white;
   font-weight: bolder;
-  font-size: 120px;
+  font-size: 100px;
   display: inline;
   margin-left: -4px;
   text-shadow: 4px 2px 6px var(--cor-fundo-calculadora);
