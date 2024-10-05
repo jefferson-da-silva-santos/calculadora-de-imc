@@ -29,7 +29,7 @@ const tipoIMC_h3 = document.getElementById("h3-imc-tipo");
 const imcH1 = document.getElementById("valor-range");
 
 document.addEventListener("DOMContentLoaded", function () {
-  atualizarValorRange();
+  // atualizarValorRange();
 
   //Abaixo os códigos para incrementar o peso
   btnAumentarPeso.addEventListener("click", function () {
@@ -134,11 +134,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-function atualizarValorRange() {
+
+
+function updateValueRange() {
   let h1 = document.getElementById("valor-range");
-  inputAltura.addEventListener("change", function () {
-    h1.textContent = inputAltura.value;
-  });
+  h1.textContent = inputAltura.value;
 }
 
 function centimetroConvertParaMetro(valor) {
